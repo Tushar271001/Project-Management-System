@@ -1,0 +1,41 @@
+<br />
+<h1 style="color: rgb(0, 0, 159);">
+    <i class="fa fa-check-circle" aria-hidden="true"></i> Completed Tasks
+</h1>
+<hr style="background-color: rgb(0, 0, 159); height: 2px">
+
+<div class="container">
+    <div class="d-flex justify-content-end mb-3">
+        <a routerLink="/create-new-task">
+            <button class="btn btn-primary rounded-pill">
+                <i class="fa fa-plus" aria-hidden="true"></i> Create New
+            </button>
+        </a>
+    </div>
+
+    <table class="table table-bordered table-muted">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col"><i class="fas fa-project-diagram"></i> Project</th>
+            <th scope="col"><i class="fas fa-tasks"></i> Task</th>
+            <th scope="col"><i class="fas fa-hourglass-half"></i> Duration</th>
+            <th scope="col"><i class="fas fa-check-circle"></i> Status</th>
+            <th scope="col"><i class="far fa-calendar-alt"></i> Date</th>
+            <th scope="col"><i class="fas fa-users"></i> Team Members</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let tk of completedTasks">
+            <td>{{ tk.id }}</td>
+            <td>{{ tk.projectName }}</td>
+            <td>{{ tk.taskName }}</td>
+            <td>{{ tk.duration }}</td>
+            <td><span class="badge bg-success">{{ tk.status }}</span></td>
+            <td>{{ tk.date }}</td>
+            <td>{{ tk.teamMembers }}</td>
+          </tr>
+        </tbody>
+      </table>
+      
+</div>

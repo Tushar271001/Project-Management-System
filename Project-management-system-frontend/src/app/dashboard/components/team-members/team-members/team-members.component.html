@@ -1,0 +1,105 @@
+<div class="container mt-5">
+    <h1 style="color: rgb(0, 0, 159);"><i class="fa fa-users" aria-hidden="true"></i> Team Members</h1>
+    <hr style="background-color: rgb(0, 0, 159); height: 2px">
+    <button class="btn btn-warning m-1 col-2" type="button" (click)="downloadPDF()">
+        Download PDF
+      </button>
+    <div class="row">
+        <div class="col-md-8 col-12">
+            <h2 style="color: rgb(0, 0, 159);">Information Team Members</h2>
+        </div>
+        <div class="col-md-4 col-12 text-md-right text-center mt-3 mt-md-0">
+            <a routerLink="/create_teammember"><button class="btn btn-primary rounded-pill"><i class="fa fa-plus-circle fa-sm" aria-hidden="true"></i> Create Admin</button></a>
+        </div>
+    </div>
+    <br>
+    <form>
+        
+        <hr>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col"><span class="sort-icon">#</span></th>
+                        <th scope="col"><span class="sort-icon">Image</span></th>
+                        <th scope="col"><span class="sort-icon">Name</span></th>
+                        <th scope="col"><span class="sort-icon">Email Address</span></th>
+                        <th scope="col"><span class="sort-icon">Contact</span></th>
+                        <th scope="col"><span class="sort-icon">Designation</span></th>
+                        <th scope="col"><span class="sort-icon">Date</span></th>
+                        <th scope="col"><span class="sort-icon">Manage</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let t of team">
+                        <th scope="row">{{t.id}}</th>
+                        <td>
+                            <img width="50" height="50" [src]="'data:image/jpeg;base64,' + t.image" alt="Admin Image" style="cursor:pointer;" class="card-size">
+                        </td>
+                        <td>{{t.name}}</td>
+                        <td>{{t.email}}</td>
+                        <td>{{t.contact}}</td>
+                        <td>{{t.designation}}</td>
+                        <td>{{t.date}}</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm" (click)="openEditModal(t)">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                            <button class="btn btn-danger btn-sm ml-2" (click)="deleteteammember()">
+                                <i class="fas fa-trash-alt"></i> Delete
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- Edit Modal -->
+            <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editModalLabel">Edit Team Member</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+                                <input type="hidden" formControlName="id"> <!-- Hidden ID field -->
+                                <div class="mb-3">
+                                    <label for="memberName" class="form-label">Name</label>
+                                    <input type="text" class="form-control" formControlName="name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="memberEmail" class="form-label">Email</label>
+                                    <input type="email" class="form-control" formControlName="email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="memberContact" class="form-label">Contact</label>
+                                    <input type="text" class="form-control" formControlName="contact" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="memberDesignation" class="form-label">Designation</label>
+                                    <select class="form-control" formControlName="designation" required>
+                                        <option value="" disabled selected>Select Designation</option>
+                                        <option *ngFor="let designation of designations" [value]="designation.id">{{ designation.name }}</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="memberAddress" class="form-label">Address</label>
+                                    <textarea class="form-control" formControlName="address"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="memberDate" class="form-label">Date</label>
+                                    <input type="date" class="form-control" formControlName="date">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="memberImage" class="form-label">Image</label>
+                                    <input type="file" class="form-control" (change)="onFileSelected($event)">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Update</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End of Edit Modal -->
+        </div>
+   

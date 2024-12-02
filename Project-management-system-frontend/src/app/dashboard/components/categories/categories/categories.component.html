@@ -1,0 +1,81 @@
+<div class="container mt">
+    <h1 style="color: rgb(0, 0, 159);"><i class="fa fa-tags" aria-hidden="true"></i> Categories</h1>
+    <hr style="background-color: rgb(0, 0, 159); height: 2px">
+    <button class="btn btn-warning m-1 col-2" type="button" (click)="downloadPDF()">
+        Download PDF
+      </button>
+    <div class="row">
+        <div class="col-md-8">
+            <h2 style="color: rgb(0, 0, 159);">Information Categories</h2>
+        </div>
+        <div class="col-md-4 text-right">
+            <a routerLink="/create-categories"><button class="btn btn-primary rounded-pill"><i class="fa fa-plus-circle fa-sm" aria-hidden="true">Create New</i> </button></a>
+        </div>
+    </div><br>
+    <form>
+       
+        <hr>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col"><span class="sort-icon">#</span></th>
+                    <th scope="col"><span class="sort-icon">Name</span></th>
+                    <th scope="col" style="width: 600px;">
+                        <span class="sort-icon">Notes</span>
+                      </th>
+                    <th scope="col"><span class="sort-icon">Date</span></th>
+                    <th scope="col"><span class="sort-icon">Manage</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let c of cat" >
+                    <th scope="row">{{c.id}}</th>
+                    <td>{{c.name}}</td>
+                    <td>{{c.notes}}</td>
+                    <td>{{c.date}}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editModal" (click)="openEditModal(c)" >
+                            <i class="fas fa-edit"></i> Edit
+                        </button>
+                        <button class="btn btn-danger btn-sm ml-2" (click)="deleteCategory(c.id)">
+                            <i class="fas fa-trash-alt"></i> Delete
+                        </button>
+                    </td>
+                </tr>
+                <!-- Repeat for more rows -->
+            </tbody>
+        </table>
+
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editModalLabel">Edit Category</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+            <form [formGroup]="editForm" (ngSubmit)="onSubmit()"> <!-- Bind the form group and submit event -->
+                <div class="mb-3">
+                    <label for="memberName" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="memberName" formControlName="name" [(ngModel)]="selectedCategory.name"  required>
+                </div>
+                <div class="mb-3">
+                    <label for="memberEmail" class="form-label">Notes</label>
+                    <input type="text" class="form-control" id="memberEmail" formControlName="notes"  [(ngModel)]="selectedCategory.notes" required>
+                </div>
+                <div class="mb-3">
+                    <label for="memberContact" class="form-label">Date</label>
+                    <input type="date" class="form-control" id="memberContact" formControlName="date" [(ngModel)]="selectedCategory.date"  required>
+                </div>
+        
+                <button type="submit" class="btn btn-primary m-1">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            </form>
+        </div>
+            </div>
+            </div>
+        </div>
+        
+        
+    </form>
+</div>

@@ -1,0 +1,137 @@
+<div class="container mt-5">
+  <h1 style="color: rgb(0, 0, 159);"><i class="fa fa-tags" aria-hidden="true"></i> Projects</h1>
+  <hr style="background-color: rgb(0, 0, 159); height: 2px">
+  <div class="row">
+      <div class="col-md-8">
+          <h2 style="color: rgb(0, 0, 159);">Information Project</h2>
+      </div>
+      <div class="col-md-4 text-right">
+          <a routerLink="/create-project"><button class="btn btn-primary rounded-pill"><i class="fa fa-plus-circle fa-sm" aria-hidden="true"></i> Create New</button></a>
+      </div>
+  </div><br>
+  <form>
+     
+      <hr>
+      <table class="table table-bordered">
+          <thead class="thead-light">
+              <tr>
+                  <th scope="col"><span class="sort-icon">#<i class="fa fa-sort-amount-desc" aria-hidden="true"></i></span></th>
+                  <th scope="col"style="width: 150px;"><span class="sort-icon">Project Name<i class="fa fa-sort" aria-hidden="true"></i></span></th>
+                  <th scope="col"style="width: 150px;" ><span class="sort-icon">Category<i class="fa fa-sort" aria-hidden="true"></i></span></th>
+                  <th scope="col"><span class="sort-icon">Duration<i class="fa fa-sort" aria-hidden="true"></i></span></th>
+                  <th scope="col"><span class="sort-icon">Project Maneger<i class="fa fa-sort" aria-hidden="true"></i></span></th>
+                  <th scope="col"><span class="sort-icon">Status<i class="fa fa-sort" aria-hidden="true"></i></span></th>
+                  <th scope="col"><span class="sort-icon">Date<i class="fa fa-sort" aria-hidden="true"></i></span></th>
+                  <th scope="col" style="width: 300px;"><span class="sort-icon">Team Members<i class="fa fa-sort" aria-hidden="true"></i></span></th>
+                  <th scope="col"><span class="sort-icon">Manage<i class="fa fa-sort" aria-hidden="true"></i></span></th>
+                  
+
+              </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let p of project" >
+                <th scope="row">{{p.id}}</th>
+                <td>{{p.projectName}}</td>
+                <td>{{p.category}}</td>
+                <td>{{p.duration}}</td>
+                <td>{{p.projectManager}}</td>
+                <td>{{p.status}}</td>
+                <td>{{p.date}}</td>
+                <td>{{p.teamMembers}}</td>
+           
+                <td>
+                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editModal" (click)="openEditModal(p)" >
+                        <i class="fas fa-edit"></i> Edit
+                    </button>
+                    <button class="btn btn-danger btn-sm ml-2" (click)="deleteCategory(p.category)" >
+                        <i class="fas fa-trash-alt"></i> Delete
+                    </button>
+                </td>
+                </tr>
+              <!-- Repeat for more rows -->
+          </tbody>
+      </table>
+      <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Edit Projects</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+        <form [formGroup]="editForm" (ngSubmit)="onSubmit()"> <!-- Bind the form group and submit event -->
+
+            <div class="mb-3">
+                <label for="memberName" class="form-label">projectName</label>
+                <input type="text" class="form-control" id="name" formControlName="projectName" [(ngModel)]="selectedProject.projectName"  required>
+            </div>
+            <!-- <div class="mb-3" style="display: none;">
+                <select class="form-control select2" style="width: 100%;" formControlName="category">
+                    <option selected="selected">---Category---</option>
+                    
+                    <option *ngFor="let c of categor" [value]="c.id">{{c.name}}</option>
+                  </select>
+                
+            </div> -->
+            
+            <div class="mb-3">
+                <label>Category</label>
+                <select class="form-control select2" style="width: 100%;" formControlName="category">
+                  <option selected="selected">---Category---</option>
+                  <!-- Loop through categories fetched from backend and bind to dropdown -->
+                  <option *ngFor="let c of categor" [value]="c.id">{{c.name}}</option>
+                </select>
+                <!-- <label for="memberEmail" class="form-label">category</label>
+                <input type="text" class="form-control" id="memberEmail" formControlName="notes"  [(ngModel)]="selectedProject.category" required> -->
+            </div>
+
+            <div class="mb-3">
+                <label for="memberEmail" class="form-label">startDate</label>
+                <input type="date" class="form-control" id="memberEmail" formControlName="startDate"  [(ngModel)]="selectedProject.startDate" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="memberEmail" class="form-label">endDate</label>
+                <input type="date" class="form-control" id="memberEmail" formControlName="endDate"  [(ngModel)]="selectedProject.endDate" required>
+            </div>
+            <div class="mb-3">
+                <label for="memberContact" class="form-label">Status</label>
+                <select class="form-control select2" style="width: 100%;" formControlName="status">
+                    <option selected="selected">---Status---</option>
+                    <option>Active</option>
+                    <option>Inactive</option>
+                    <option>Pending</option>
+                  </select>
+                <!-- <input type="date" class="form-control" id="memberContact" formControlName="date" [(ngModel)]="selectedProject.projectManager"  required> -->
+            </div>
+
+            <div class="mb-3">
+                <label for="memberContact" class="form-label">Date</label>
+                <input type="date" class="form-control" id="memberContact" formControlName="date" [(ngModel)]="selectedProject.date"  required>
+            </div>
+
+            <div class="mb-3">
+                <label for="memberContact" class="form-label">projectManager</label>
+                <input type="text" class="form-control" id="memberContact" formControlName="projectManager" [(ngModel)]="selectedProject.projectManager"  required>
+            </div>
+
+            <!-- <div class="mb-3">
+                <label for="memberContact" class="form-label">teamMembers</label>
+                <input type="text" class="form-control" id="memberContact" formControlName="teamMembers" [(ngModel)]="selectedProject.teamMembers"  required>
+            </div> -->
+
+            <div class="mb-3">
+                <label for="memberContact" class="form-label">description</label>
+                <input type="text" class="form-control" id="memberContact" formControlName="description" [(ngModel)]="selectedProject.description"  required>
+            </div>
+    
+            <button type="submit" class="btn btn-primary m-1">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        </form>
+    </div>
+        </div>
+        </div>
+    </div>
+      
+  </form>
+</div>

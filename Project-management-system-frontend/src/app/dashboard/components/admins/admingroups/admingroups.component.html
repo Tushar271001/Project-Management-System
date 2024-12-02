@@ -1,0 +1,48 @@
+<div class="container mt-5">
+  <h1 style="color: rgb(0, 0, 159);"><i class="fa fa-text-height fa-sm" aria-hidden="true"></i> Edit Admins Groups</h1>
+  <hr style="background-color: rgb(0, 0, 159); height: 2px">
+  <form [formGroup]="form" (ngSubmit)="formSubmit()">
+    <div class="card-header">
+      <h1 class="card-title" style="color: blue; font-size: 30px;"></h1>
+      <div class="card-tools">
+        <button routerLink="/creategroup"type="button" class="btn btn-primary rounded-pill" data-card-widget="remove">
+          <i class="fa fa-share">Back</i>
+        </button>
+      </div>
+    </div>
+    <hr>
+    <label>Name</label>
+    <input class="form-control" value="{{adminGroup.group_name}}" readonly><br />
+    <label>Description</label>
+    <input class="form-control" value="{{adminGroup.description}}" readonly><br />
+    <input class="form-control" value="{{adminGroup.id}}" readonly><br />
+    <hr>
+    <h5>Permission</h5>
+    <div class="table-responsive">
+      <table class="table">
+        <thead class="thead-light">
+          <tr style="text-align: center;">
+            <th scope="col">id</th>
+            <th scope="col">Modules</th>
+            <th scope="col">Show</th>
+            <th scope="col">Create</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody style="text-align: center;">
+          <tr *ngFor="let p of permissions">
+            <td style="color: red;">{{p.id}}</td>
+            <td style="color: green;">{{p.modules}}</td>
+            <td><input type="checkbox" [formControlName]="'showPermission_' + p.id" class="checkbox"> Show</td>
+            <td><input type="checkbox" [formControlName]="'createPermission_' + p.id" class="checkbox"> Create</td>
+            <td><input type="checkbox" [formControlName]="'editPermission_' + p.id" class="checkbox"> Edit</td>
+            <td><input type="checkbox" [formControlName]="'deletePermission_' + p.id" class="checkbox"> Delete</td>
+            <td><button class="btn btn-outline-primary" (click)="onupdate()" type="submit">UPDATE</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,56 @@
+<div class="container mt">
+    <h1 style="color: rgb(0, 0, 159);"><i class="fa fa-users fa-sm" aria-hidden="true"></i> Group List</h1>
+    <hr style="background-color: rgb(0, 0, 159); height: 2px">
+    <button class="btn btn-warning m-1 col-2" type="button" (click)="downloadPDF()">
+        Download PDF
+      </button>
+    <div class="row">
+        <div class="col-md-8 col-12">
+            <h2 style="color: rgb(0, 0, 159);">Information Admin Groups</h2>
+        </div>
+        <div class="col-md-4 col-12 text-md-right text-right mt-3 mt-md-0">
+            <a routerLink="/createadmingroup"><button class="btn btn-primary rounded-pill"><i class="fa fa-plus-circle fa-sm"  aria-hidden="true"></i> Create New</button></a>
+        </div>
+    </div>
+    <br>
+    <form>
+        
+        <hr>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col"><span class="sort-icon"></span></th>
+                        <th scope="col"><span class="sort-icon">Name</span></th>
+                        <th scope="col"><span class="sort-icon">Description</span></th>
+                        <th scope="col"><span class="sort-icon">Date</span></th>
+                        <th scope="col"><span class="sort-icon">Manage</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let g of adminGroup">
+                        <th scope="row">{{g.id}}</th>
+                        <td>{{g.group_name}}</td>
+                        <td>{{g.description}}</td>
+                        <td>{{g.createdDate}}</td>
+                        <td>
+                            <div class="dropdown d-inline" *ngIf="g.id != '1'">
+                                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="actionDropdown1" data-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-cog"></i>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="actionDropdown1">
+                                    <li><button class="dropdown-item btn-primary btn-sm" routerLink="/admingroups/{{g.id}}">Edit</button></li>
+                                    <li><button class="dropdown-item btn-danger btn-sm">Delete</button></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- Repeat for more rows -->
+                </tbody>
+            </table>
+        </div>
+        <div class="row mb-3">
+          
+      </div>
+    </form>
+  </div>

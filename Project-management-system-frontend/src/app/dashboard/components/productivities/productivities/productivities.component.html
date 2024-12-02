@@ -1,0 +1,98 @@
+<div class="container mt-5">
+    <h1 style="color: rgb(0, 0, 159);"><i class="fa fa-tags" aria-hidden="true"></i> Productivities</h1>
+    <hr style="background-color: rgb(0, 0, 159); height: 2px">
+    <div class="row">
+        <div class="col-md-8">
+            <h2 style="color: rgb(0, 0, 159);">Information Productivities</h2>
+        </div>
+        <div class="col-md-4 text-right">
+            <a routerLink="/createproductivity">
+                <button class="btn btn-primary rounded-pill">
+                    <i class="fa fa-plus-circle fa-sm" aria-hidden="true"></i> Create New
+                </button>
+            </a>
+        </div>
+    </div><br>
+    
+    <form>
+        
+        <hr>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Project Name</th>
+                    <th scope="col">Productivity Name</th>
+                    <th scope="col">Duration</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Manage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let pr of productivities">
+                    <th scope="row">{{ pr.id }}</th>
+                    <td>{{ pr.projectName }}</td>
+                    <td>{{ pr.productivityName }}</td>
+                    <td><span class="status-badge">{{ pr.duration }}</span></td>
+                    <td>{{ pr.status }}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" (click)="openEditModal(pr)">
+                            <i class="fas fa-edit"></i> Edit
+                        </button>
+                        <button class="btn btn-danger btn-sm ml-2" (click)="deleteCategory(pr.id)">
+                            <i class="fas fa-trash-alt"></i> Delete
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editModalLabel">Edit Productivity</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+                            <div class="mb-3">
+                                <label for="project" class="form-label">Project</label>
+                                <select class="form-control" formControlName="project">
+                                    <option value="" disabled selected>Select a project</option>
+                                    <option *ngFor="let project of projects" [value]="project.id">{{ project.projectName }}</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="productivityName" class="form-label">Productivity Name</label>
+                                <input type="text" class="form-control" formControlName="productivityName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="memberContact" class="form-label">Status</label>
+                                <select class="form-control select2" style="width: 100%;" formControlName="status">
+                                    <option selected="selected">---Status---</option>
+                                    <option>Active</option>
+                                    <option>Inactive</option>
+                                    <option>Pending</option>
+                                  </select>
+                                <!-- <input type="date" class="form-control" id="memberContact" formControlName="date" [(ngModel)]="selectedProject.projectManager"  required> -->
+                            </div>
+                            <div class="mb-3">
+                                <label for="startDate" class="form-label">Start Date</label>
+                                <input type="date" class="form-control" formControlName="startDate" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="endDate" class="form-label">End Date</label>
+                                <input type="date" class="form-control" formControlName="endDate" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary m-1">Save changes</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+    </form>
+</div>

@@ -1,0 +1,101 @@
+<br /><h1 style="color: rgb(0, 0, 159);"><i class="fa fa-plus-circle fa-sm" aria-hidden="true"></i> Create Projects</h1>
+<hr style="background-color: rgb(0, 0, 159); height: 2px">
+<form [formGroup]="form" (ngSubmit)="formSubmit()">
+  <div class="card card-default">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <label>Name</label>
+            <input class="form-control" type="text" formControlName="projectName">
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label>Start Date</label>
+            <input class="form-control" type="date" formControlName="startDate">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>End Date</label>
+            <input class="form-control" type="date" formControlName="endDate">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Project Manager</label>
+            <input class="form-control" type="text" formControlName="projectManager">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Category</label>
+            <select class="form-control select2" style="width: 100%;" formControlName="category">
+              <option selected="selected">---Category---</option>
+              <option *ngFor="let c of categor" [value]="c.id">{{c.name}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Team Members</label>
+            <div class="dropdown" (click)="toggleDropdown()">
+              <input
+                type="text"
+                class="form-control"
+                [placeholder]="selectedMembersDisplay"
+                [value]="selectedMembersDisplay"
+                readonly
+              />
+              <div class="dropdown-menu" [ngClass]="{'show': dropdownOpen}">
+                <div *ngFor="let team of teamMembers">
+                  <label>
+                    <input
+                      type="checkbox"
+                      [value]="team.id"
+                      (change)="onTeamMembersChange($event)"
+                      [checked]="selectedTeamMembers.includes(team.id)"
+                    />
+                    {{ team.name }}
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          
+          
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Status</label>
+            <select class="form-control select2" style="width: 100%;" formControlName="status">
+              <option selected="selected">---Status---</option>
+              <option>Active</option>
+              <option>Inactive</option>
+              <option>Pending</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Description</label>
+            <textarea class="form-control" rows="4" placeholder="Enter detailed description" formControlName="description"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block mb-4 rounded-pill">Save</button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,30 @@
+<h2 style="color: blue;"><i class="fa fa-tags" aria-hidden="true"></i> Create Categories</h2>
+<hr style="background-color: blue;">
+<div class="card-header">
+  <h1 class="card-title" style="color: blue; font-size: 30px;">Enter Information</h1>
+
+  <div class="card-tools">
+
+    <button routerLink="/categories" type="button" class="btn btn-primary rounded-pill" data-card-widget="remove">
+
+      <i class="fa fa-share">Back</i>
+
+    </button>
+  </div>
+</div>
+
+<!-- Name input -->
+ <form [formGroup]="form" (ngSubmit)="formSubmit()">
+ <div data-mdb-input-init class="form-outline mb-4">
+  <label class="form-label" for="form7Example1">Name</label>
+    <input type="text" id="form7Example1" class="form-control" formControlName="name" />
+</div>
+
+  <!-- Note input -->
+  <div data-mdb-input-init class="form-outline mb-4">
+    <label class="form-label" for="form4Example3">Notes</label>
+    <textarea class="form-control" id="form4Example3" rows="4" formControlName="notes" ></textarea>
+  </div>
+
+  <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block mb-4 rounded-pill">Save</button>
+</form>

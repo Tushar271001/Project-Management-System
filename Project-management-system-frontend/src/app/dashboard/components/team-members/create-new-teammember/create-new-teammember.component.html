@@ -1,0 +1,97 @@
+<br /><h1 style="color: rgb(0, 0, 159);"><i class="fa fa-plus-circle fa-sm" aria-hidden="true"></i> Create Team Members</h1>
+<hr style="background-color: rgb(0, 0, 159); height: 2px">
+<div class="card-header">
+  <h1 class="card-title" style="color: blue; font-size: 30px;">Enter Information</h1>
+
+  <div class="card-tools">
+
+    <button routerLink="/teammembers" type="button" class="btn btn-primary rounded-pill" data-card-widget="remove">
+
+      <i class="fa fa-share">Back</i>
+
+    </button>
+  </div>
+</div>
+
+<form [formGroup]="form" (ngSubmit)="formSubmit()">
+<div class="card card-default">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="form-group">
+          <label>Designation</label>
+          <div class="form-group">
+            <select class="form-control select2" style="width: 150%;" formControlName="designation">
+              <option selected="selected">--</option>
+              <option *ngFor="let d of designation" value="{{d.id}}" >{{d.name}}</option>
+            
+            </select>
+          </div>
+        </div>
+      </div>
+      
+      </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Name</label>
+          <input class="form-control" type="text" formControlName="name">
+          <!-- <select class="form-control select2"  formControlName="name">
+          <option selected="selected">--</option>
+              <option *ngFor="let n of admins" value="{{n.id}}" >{{n.firstName}}{{n.lastName}}</option>
+            </select> -->
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>E-Mail</label>
+          <input class="form-control" type="text" formControlName="email">
+          <!-- <select class="form-control select2"  formControlName="email">
+            <option selected="selected">--</option>
+                <option *ngFor="let n of admins" value="{{n.id}}" >{{n.email}}</option>
+              </select> -->
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Phone No</label>
+          <input class="form-control" type="text" formControlName="contact">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      
+      <div class="col-md-8">
+        <div class="form-group">
+          <label>Address</label>
+          <input class="form-control" type="text" formControlName="address">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Image</label>
+          <div class="mb-3">
+            <input type="file" (change)="onFileSelected($event)" class="form-control">
+          </div>
+          <!-- <div class="custom-file">
+            <input type="file" class="custom-file-input" id="inputGroupFile01" formControlName="image">
+            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+          </div> -->
+        </div>
+      </div>
+      
+      <div class="col-md-12">
+        <div class="form-group">
+          <div class="form-group">
+            <label>&nbsp;</label>
+            <input type="submit" class="btn btn-primary form-control rounded-pill" value="Save">
+           
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</form>

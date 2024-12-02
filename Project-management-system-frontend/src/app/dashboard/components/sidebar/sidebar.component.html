@@ -1,0 +1,243 @@
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a routerLink="/admin-home" class="brand-link">
+      <img src="assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Code crafters</span>
+    </a>
+  
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <!-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">{{user.firstname}}{{user.lastname}}</a>
+        </div>
+      </div> -->
+  
+      <!-- SidebarSearch Form -->
+      <div class="form-inline">
+        <div class="input-group" data-widget="sidebar-search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-sidebar">
+              <i class="fas fa-search fa-fw"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+  
+          <li class="nav-item">
+            <a href="/admin-home" class="nav-link active">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Dashboard
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <p>  Admins
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a routerLink="/admins" class="nav-link">
+                  <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                  <p>  Admins</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="/createnew" class="nav-link">
+                  <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                  <p>  Create New</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="/creategroup" class="nav-link">
+                  <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                  <p>  Admin Groups</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="/categories" class="nav-link">
+              <i class="fa fa-tags" aria-hidden="true"></i>
+              <p>  Categories
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a routerLink="/categories" class="nav-link">
+                  <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                  <p>  Categories</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="/create-categories" class="nav-link">
+                  <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                  <p>  Create New</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa fa-users" aria-hidden="true"></i>
+              <p>  Team Members
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a routerLink="/designations" class="nav-link">
+                  <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                  <p>  Designations</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="/teammembers" class="nav-link">
+                  <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                  <p>  Team Members</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="/create_teammember" class="nav-link">
+                  <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                  <p>  Create New</p>
+                </a>
+              </li>
+              <!-- <li class="nav-item">
+                <a routerLink="/designations" class="nav-link">
+                  <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                  <p>  Designations</p>
+                </a>
+              </li> -->
+            </ul>
+          </li>
+          <li class="nav-item ">
+            <a href="#" class="nav-link">
+              <i class="fa fa-flag" aria-hidden="true"></i>
+              <p>  Projects
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a routerLink="/project" class="nav-link">
+                  <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                  <p>  Projects</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="/create-project" class="nav-link">
+                  <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                  <p>  Create New</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa fa-check-circle" aria-hidden="true"></i>
+              <p>  Tasks
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a routerLink="/tasks" class="nav-link">
+                  <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                  <p>Completed Tasks</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="/pending-task" class="nav-link">
+                  <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                  <p>Pending  Tasks</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="/create-new-task" class="nav-link">
+                  <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                  <p>  Create New</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+        
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa fa-life-ring" aria-hidden="true"></i>
+              <p>  Productivities
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a routerLink="/productivities" class="nav-link">
+                  <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                  <p>  Productivities</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="/createproductivity" class="nav-link">
+                  <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                  <p>  Create New</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa fa-folder-open" aria-hidden="true"></i>
+              <p>  Reports
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a routerLink="/project-report" class="nav-link">
+                  <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                  <p>  Projects Report</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="/taskreport" class="nav-link">
+                  <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                  <p>  Tasks Report</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="/productivities-report" class="nav-link">
+                  <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                  <p>  Productivities Report</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/setting" class="nav-link">
+              <i class="fa fa-cogs" aria-hidden="true"></i>
+              <p>  Settings
+              </p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>

@@ -1,0 +1,104 @@
+<br /><h1 style="color: rgb(0, 0, 159);"><i class="fa fa-plus-circle fa-sm" aria-hidden="true"></i> Create New Task</h1>
+<hr style="background-color: rgb(0, 0, 159); height: 2px">
+<div class="card-header">
+  <h1 class="card-title" style="color: blue; font-size: 30px;">Enter Information</h1>
+
+  <div class="card-tools">
+
+    <button routerLink="/teammembers" type="button" class="btn btn-primary rounded-pill" data-card-widget="remove">
+
+      <i class="fa fa-share">Back</i>
+
+    </button>
+  </div>
+</div>
+
+<form [formGroup]="form" (ngSubmit)="formSubmit()">
+  <div class="card card-default">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Name</label>
+            <input class="form-control" type="text" formControlName="taskName" />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Project</label>
+            <select class="form-control" formControlName="project">
+              <option *ngFor="let project of projects" [value]="project.id">
+                {{ project.projectName }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <label>Start Date</label>
+            <input class="form-control" type="date" formControlName="startDate" />
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label>End Date</label>
+            <input class="form-control" type="date" formControlName="endDate" />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Status</label>
+            <select class="form-control" formControlName="status">
+              <option>Completed</option>
+              <option>Pending</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label>Team Members</label>
+            <div class="dropdown" (click)="toggleDropdown()">
+              <input
+                type="text"
+                class="form-control"
+                [placeholder]="selectedMembersDisplay"
+                [value]="selectedMembersDisplay"
+                readonly
+              />
+              <div class="dropdown-menu" [ngClass]="{ show: dropdownOpen }">
+                <div *ngFor="let team of teamMembers">
+                  <label>
+                    <input
+                      type="checkbox"
+                      [value]="team.id"
+                      (change)="onTeamMembersChange($event)"
+                      [checked]="selectedTeamMembers.includes(team.id)"
+                    />
+                    {{ team.name }}
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label>Description</label>
+            <textarea class="form-control" rows="4" formControlName="description"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block mb-4">Save</button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,74 @@
+<div class="container mt-5">
+    <h1 style="color: rgb(0, 0, 159);"><i class="fa fa-tags" aria-hidden="true"></i> Projects</h1>
+    <hr style="background-color: rgb(0, 0, 159); height: 2px">
+    <div class="row">
+        <div class="col-md-8">
+            <h2 style="color: rgb(0, 0, 159);">Information Project</h2>
+        </div>
+        <div class="col-md-4 text-right">
+            <a routerLink=""><button class="btn btn-primary rounded-pill"><i class="fa fa-plus-circle fa-sm" aria-hidden="true"></i> Create New</button></a>
+        </div>
+    </div><br>
+    <form>
+        <div class="row">
+            <div class="col-md-8">
+                <p>Show <input type="number" style="width: 60px; height: 30px;"> Entries</p>
+            </div>
+            <div class="col-md-4 text-right">
+                <p>Search <input type="text" style="width: 200px; height: 35px;"></p>
+            </div>
+        </div>
+        <hr>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col"><span class="sort-icon">#<i class="fa fa-sort-amount-desc" aria-hidden="true"></i></span></th>
+                    <th scope="col"><span class="sort-icon">Name<i class="fa fa-sort" aria-hidden="true"></i></span></th>
+                    <th scope="col"><span class="sort-icon">Category<i class="fa fa-sort" aria-hidden="true"></i></span></th>
+                    <th scope="col"><span class="sort-icon">Duration<i class="fa fa-sort" aria-hidden="true"></i></span></th>
+                    <th scope="col"><span class="sort-icon">Project Maneger<i class="fa fa-sort" aria-hidden="true"></i></span></th>
+                    <th scope="col"><span class="sort-icon">Status<i class="fa fa-sort" aria-hidden="true"></i></span></th>
+                    <th scope="col"><span class="sort-icon">Date<i class="fa fa-sort" aria-hidden="true"></i></span></th>
+                    <th scope="col"><span class="sort-icon">Manage<i class="fa fa-sort" aria-hidden="true"></i></span></th>
+  
+                </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let p of pro" >
+                    <th scope="row">{{p.id}}</th>
+                    <td>{{p.name}}</td>
+                    <td>{{p.category}}</td>
+                    <td><span class="status-badge">{{p.duration}}</span></td>
+                    <td>{{p.projectmanager}}</td>
+                    <td>{{p.status}}</td>
+                    <td>{{p.date}}</td>
+                    <td>
+                      <div class="dropdown d-inline">
+                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="actionDropdown1" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-cog"></i>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="actionDropdown1">
+                            <li><button class="dropdown-item btn-primary btn-sm"><a routerLink="/admin-home/showproject">Edit</a></button></li>
+                            <li><button class="dropdown-item btn-danger btn-sm">Delete</button></li>
+                        </ul>
+                    </div>
+                    </td>
+  
+                </tr>
+                <!-- Repeat for more rows -->
+            </tbody>
+        </table>
+        <div class="row mb-3">
+            <div class="col-md-12 text-right">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-end">
+                        <li class="page-item"><a class="page-link" href="#"><i class="fa fa-chevron-left"></i> Previous</a></li>
+                        <li class="page-item"><a class="page-link" style="background-color: rgb(85, 85, 248); color: white;" href="#">1</a></li>
+                        <!-- Add more li elements for additional pages as needed -->
+                        <li class="page-item"><a class="page-link" href="#">Next <i class="fa fa-chevron-right"></i></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </form>
+  </div>

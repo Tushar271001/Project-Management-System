@@ -1,0 +1,92 @@
+<div class="container mt-5">
+    <h1 style="color: rgb(0, 0, 159);"><i class="fa fa-user" aria-hidden="true"></i> Designation</h1>
+    <hr style="background-color: rgb(0, 0, 159); height: 2px">
+    <button class="btn btn-warning m-1 col-2" type="button" (click)="downloadPDF()">
+        Download PDF
+      </button>
+    <div class="row">
+        <div class="col-md-8 col-12">
+            <h2 style="color: rgb(0, 0, 159);">Information Designation</h2>
+        </div>
+        <div class="col-md-4 col-12 text-md-right text-center mt-3 mt-md-0">
+            <a routerLink="/createdesignation"><button class="btn btn-primary rounded-pill"><i class="fa fa-plus-circle fa-sm" aria-hidden="true"></i> Create New</button></a>
+        </div>
+    </div>
+    <br>
+    <form>
+       
+        <hr>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col"><span class="sort-icon">#</span></th>
+                        <th scope="col"><span class="sort-icon">Name</span></th>
+                        <th scope="col"><span class="sort-icon">Category</span></th>
+                        <th scope="col" style="width: 400px;"><span class="sort-icon">Description</span></th>
+                        <th scope="col"><span class="sort-icon">Date</span></th>
+                        <th scope="col"><span class="sort-icon">Manage</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let d of cat">
+                        <th scope="row">{{d.id}}</th>
+                        <td>{{d.name}}</td>
+                        <td>{{d.categoryName}}</td>
+                        <td>{{d.description}}</td>
+                        <td>{{d.date}}</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editModal" (click)="openEditModal(d)" >
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                            <button class="btn btn-danger btn-sm ml-2" (click)="deleteCategory(d.id)">
+                                <i class="fas fa-trash-alt"></i> Delete
+                            </button>
+                        </td>
+                    </tr>
+                    <!-- Repeat for more rows -->
+                </tbody>
+            </table>
+
+            <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editModalLabel">Edit designation</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                <form [formGroup]="editForm" (ngSubmit)="onSubmit()"> <!-- Bind the form group and submit event -->
+                    <div class="mb-3">
+                        <label for="memberName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="memberName" formControlName="name" [(ngModel)]="selectedCategory.name"  required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="memberEmail" class="form-label">Description</label>
+                        <input type="text" class="form-control" id="memberEmail" formControlName="description"  [(ngModel)]="selectedCategory.description" required>
+                    </div>
+                    <div class="mb-3">
+                        <label>Category</label>
+                        <select class="form-control select2" style="width: 100%;" formControlName="category">
+                        
+                          <!-- Loop through categories fetched from backend and bind to dropdown -->
+                          <option *ngFor="let c of categor" [value]="c.id">{{c.name}}</option>
+                        </select>
+                        <!-- <label for="memberEmail" class="form-label">category</label>
+                        <input type="text" class="form-control" id="memberEmail" formControlName="notes"  [(ngModel)]="selectedProject.category" required> -->
+                    </div>
+                    <div class="mb-3">
+                        <label for="memberContact" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="memberContact" formControlName="date" [(ngModel)]="selectedCategory.date"  required>
+                    </div>
+            
+                    <button type="submit" class="btn btn-primary m-1">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                </form>
+            </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,25 @@
+.back-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #ffc107; /* Yellow background */
+    border: none; /* Remove border */
+    color: white; /* White text color */
+    border-radius: 50%; /* Circular button */
+    width: 40px; /* Width of the button */
+    height: 40px; /* Height of the button */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow */
+    cursor: pointer;
+}
+.back-button:hover {
+    background-color: #e0a800; /* Darker yellow on hover */
+}
+.back-button i {
+    font-size: 18px; /* Adjust icon size */
+}
+.container {
+    position: relative;
+}

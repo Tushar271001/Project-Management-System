@@ -1,0 +1,71 @@
+<br /><h1 style="color: rgb(0, 0, 159);"><i class="fa fa-folder" aria-hidden="true"></i> Task Reports</h1>
+<button class="btn btn-warning m-1 col-2" type="button" (click)="downloadPDF()">
+  Download PDF
+</button>
+<hr style="background-color: rgb(0, 0, 159); height: 2px">
+
+<div class="card card-default">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label style="color: blue;">Project</label>
+          <select class="form-control" [(ngModel)]="selectedProject">
+            <option value="">------</option>
+            <option *ngFor="let project of projects" [value]="project.id">{{project.projectName}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label style="color: blue;">Status</label>
+          <select class="form-control" [(ngModel)]="selectedStatus">
+            <!-- <option value="">------</option>
+            <option *ngFor="let status of statuses" [value]="status">{{status}}</option> -->
+            <option>Completed</option>
+            
+            <option>Pending</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <button class="btn btn-primary rounded-pill btn-block mb-3" (click)="fetchProjectsByTask()">Search by Project</button>
+      </div>
+
+      <div class="col-md-6">
+        <button class="btn btn-primary rounded-pill btn-block mb-3" (click)="fetchProjectsByStatus()">Search by Status</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mt-4">
+  <table class="table table-bordered table-muted">
+    <thead>
+      <tr>
+        <th>NO.</th>
+        <th>Task Name</th>
+        <th>project Name</th>
+        <th>Status</th>
+        <th>Duration</th>
+        <th>date</th>
+       
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let project of task let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{project.taskName}}</td>
+        <td>{{project.projectName}}</td>
+        <td>{{project.status}}</td>
+        <td>{{project.duration}}</td>
+        <td>{{project.date}}</td>
+        
+      </tr>
+    </tbody>
+  </table>
+</div>

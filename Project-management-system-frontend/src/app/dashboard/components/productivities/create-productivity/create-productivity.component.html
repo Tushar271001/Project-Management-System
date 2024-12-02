@@ -1,0 +1,69 @@
+<!-- create-productivity.component.html -->
+<h2 style="color: blue;"><i class="fa fa-tags" aria-hidden="true"></i> Create Productivities</h2>
+<hr style="background-color: blue;">
+<div class="card-header">
+  <h1 class="card-title" style="color: blue; font-size: 30px;">Enter Information</h1>
+  <div class="card-tools">
+    <button routerLink="/productivities" type="button" class="btn btn-primary rounded-pill" data-card-widget="remove">
+      <i class="fa fa-share">Back</i>
+    </button>
+  </div>
+</div>
+<form [formGroup]="form" (ngSubmit)="formSubmit()">
+  <div class="card card-default">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Name</label>
+            <input class="form-control" type="text" formControlName="productivityName">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Project</label>
+            <select class="form-control select2" style="width: 100%;" formControlName="project">
+              <option selected="selected">------</option>
+              <option *ngFor="let project of projects" [value]="project.id">{{ project.projectName }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <label>Start Date</label>
+            <input class="form-control" type="date" formControlName="startDate">
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label>End Date</label>
+            <input class="form-control" type="date" formControlName="endDate">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Status</label>
+            <select class="form-control select2" style="width: 100%;" formControlName="status">
+              <option selected="selected">------</option>
+              <option>Active</option>
+              <option>Inactive</option>
+              <option>Pending</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Description</label>
+          <textarea class="form-control" rows="4" cols="80" placeholder="Enter detailed description" formControlName="description"></textarea>
+        </div>
+      </div>
+      <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block mb-4 rounded-pill">Save</button>
+    </div>
+  </div>
+</form>

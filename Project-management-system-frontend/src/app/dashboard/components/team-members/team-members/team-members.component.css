@@ -1,0 +1,45 @@
+.status-badge {
+    display: inline-block;
+    padding: 0.5em 1em;
+    border-radius: 50px;
+    background-color: #28a745;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+.table-bordered, .table-bordered th, .table-bordered td {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+th .sort-icon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+th .sort-icon i {
+    color: rgba(0, 0, 0, 0.5);
+    margin-left: 5px;
+}
+.dropdown-toggle {
+    background-color: #007bff; /* Blue background for the dropdown button */
+    border: none; /* Remove border */
+    color: white; /* White text color */
+}
+.dropdown-toggle:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+.dropdown-menu {
+    background-color: #007bff; /* Blue background for the dropdown menu */
+    border: none; /* Remove border */
+}
+.dropdown-menu .dropdown-item {
+    color: white; /* White text color for dropdown items */
+}
+.dropdown-menu .dropdown-item:hover {
+    background-color: #0056b3; /* Darker blue on hover for items */
+}
+.dropdown-menu .dropdown-item:active {
+    background-color: #004085; /* Even darker blue on active */
+}
+th {
+    text-align: center;
+}

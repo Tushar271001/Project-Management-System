@@ -1,0 +1,4 @@
+.checkbox {
+    transform: scale(1.5); /* Adjust the scale to increase the checkbox size */
+    margin-right: 10px; /* Add some space between the checkbox and the label text */
+  }
